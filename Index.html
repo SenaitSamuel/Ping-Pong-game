@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Ping Pong Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+    <!-- Boostrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>  
+#page-wrapper {
+    min-height: 100vh;
+    background-color: black;
+} 
+
+</style>
+<body>
+        <div id="page-wrapper"  class=" [  d-flex align-items-center  ] " >
+                <div class=" [ container-fluid ]  " >
+                    <div class=" [ row ]   [ justify-content-center align-items-center  d-flex text-center h-100 ] ">
+                        <div class="Logo  mt-0 ">
+                            <h1 class=" [ text-light ]  [ mb-2 mt-0  p-2] " > Logo</h1>
+                        </div>
+                        <div id="welcomePage">
+                            <h1 class=" [ text-light ]  [ mb-2 mt-0  p-2] "  >welcome to the Pong ping game</h1>
+                            <a href="home.html" class=" [ btn bg-primary btn-lg text-light ]  [ mt-5 ] ">Go back</a>
+                            <button type="button" class=" [ btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
+                                   continue
+                                </button>
+                        </div>
+                        <div id="form">
+                         
+                                  <input  id= "registeredUserName"  type="text"  placeholder="Enter User Name" class=" [ form-control ]  [ p-2 ] "  required  />
+                            
+                             <div  id="registeredForm"  class=" [ form-group ]  [ mb-4 ] ">
+                                   <button  type="button"  class=" [  btn btn-primary btn-block ]  " >Continue</button>
+                            </div>
+                        </div>
+                                   
+                        <div  id="theme"  class=" [ col-12 ]    ">  
+                                <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your theme</h1> 
+                                <button type="button" class=" [ buttonThemeSnow  themebutton1 btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
+                                    Snow
+                                </button>
+                                <button type="button"  class=" [ buttonThemeSpace btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Space</button>
+                         </div>
+                        <div  id="level" class=" [ level col-12 ]   ">
+                                <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your level</h1>
+                            <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
+                            esay
+                            </button>
+                            <button  type="button"  class=" [ buttonLevelMedium  btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] "> Medium </button>
+                            <button   type="button"  class=" [ buttonLevelHard   btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Hard </button>
+                            </div>
+                      
+                            <div  id="startGame" class=" [ level col-12 ]   ">
+                                    <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Start the game</h1>
+                                <button  type="button" class=" [   btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
+                                 Start 
+                                </button>
+                                
+                                </div>
+                            
+                                    <canvas id="myCanvas" width="600" height="400"></canvas>  
+                                    <div  id="exit" class="form-group mb-4" >
+                                            <button   class="btn btn-primary  btn-block " >Exit</button>
+                                         </div>
+                                         <div  id="highScore" class="form-group mb-4" >
+                                                <button   class="btn btn-primary  btn-block " >High Score</button>    
+                                             </div>
+                                             <div class="score text-light"> </div>
+                                </div>
+                            
+                    </div>
+                 </div> 
+
+        
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script> 
+    <script src="Script/script.js"></script>
+</body>
+</html>
+
+
+
+
+
