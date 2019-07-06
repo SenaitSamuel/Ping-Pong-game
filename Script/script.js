@@ -59,29 +59,10 @@ level.addEventListener('click', showLevel)
 function showLevel(event) {
     startGame.style.display="block"
     level.style.display="none" 
-    var selectedLevel = event.target
-
-    if (selectedLevel.classList.contains("buttonLevelMedium")){
-        ball.velocityX = 7
-        ball.velocityY =  7
-        ball.speed= 10 
-        ball.color="blue"
-       
-        
-    }
-   else if (selectedLevel.classList.contains("buttonLevelHard")){
-        ball.velocityX = 15
-        ball.velocityY =  7
-        ball.speed= 15
-        ball.color="green" 
-        console.log(ball.speed)
-    }
-   else{
-       ball.color="yellow"
-   }
-    event.stopPropagation()
+   
 }  
- // exit
+ 
+ // start
  var  startGame = document.getElementById("startGame");
  startGame.style.display="none"
  startGame.addEventListener('click', start )
@@ -106,7 +87,7 @@ function showLevel(event) {
 
    // exit
  var  highScore = document.getElementById("highScore");
- var  score = document.getElementsByClassName("score")
+ var  score = document.getElementById("score")
  highScore.style.display="none"
   highScore.addEventListener('click', scoreButton )
   
@@ -125,17 +106,17 @@ function showLevel(event) {
   
     if(comName  && comScore)
     localStorage.setItem(comName, comScore);
-   
-     
+    displayHighScore(userName, comName)
+}
     
-    for(var i = 0; i<localStorage.length; i++){
-        var key = localStorage.key(i)
-        var value = localStorage.getItem(key)
-         console.log( key + value )
-        
+    function displayHighScore(userName, comName ){
+        score.innerHTML= userName + userScore +"<br>"+ comName+ comScore
+
     }
+        
+    
      
-  }
+ 
 
 // select canvas element
 var  canvas = document.getElementById("myCanvas");
@@ -222,20 +203,49 @@ function drawText(text,x,y){
 } 
 
 
+
 // listening to the mouse
 canvas.addEventListener('click',startMouseClick);
-
-function startMouseClick(evt) {
-    
+function startMouseClick(event ) {
     if(ball.velocityX === 0 && ball.velocityY === 0){
+        diffuclity()
+    }  
+}
+function diffuclity(){
+    var selectedLevel = event.target.previousElementSibling
+    var medium = selectedLevel.querySelector('.buttonLevelMedium')
+    var hard = selectedLevel.querySelector('.buttonLevelHard')
+    var esay = selectedLevel.querySelector('.buttonLevelEsay')
+    console.log(selectedLevel)
+
+    if (medium.classList.contains("buttonLevelMedium")){
         ball.velocityX = 7
         ball.velocityY =  7
-        ball.speed= 10   
+        ball.speed= 10 
+        ball.color="blue"
+        console.log(ball.velocityX )
+        console.log(ball.velocityY )
        
+        
     }
+   else if (hard.classList.contains("buttonLevelHard")){
+        ball.velocityX = 15
+        ball.velocityY =  7
+        ball.speed= 15
+        console.log(ball.velocityX )
+        console.log(ball.velocityY )
+    }
+   else{
+    ball.velocityX = 4
+    ball.velocityY =  4
+    ball.speed= 10 
+    console.log(ball.velocityX )
+    console.log(ball.velocityY )
+   }
+    
+    
 
- 
-}
+ }
 canvas.addEventListener("mousemove", mousePos);
 
 function mousePos(evt){
