@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title> HTML5 page </title>
+</head>
+<body>
+<input type="text" id="uname" value="">
+<button id="btnSave" onclick="saveData()">Save</button>
+<button onclick="localStorage.setItem('uname','');showLS()">Clear</button>
+<button onclick="showLS()">Contents</button>
+<p>Contents:<br>
+<pre id="contents"></pre>
+<script>
+
+function saveData(){
+  var lsNames = localStorage.getItem('uname')
+      arr = [];
+  if (!lsNames) { lsName = ''; }  // initialize if null
+  arr = lsNames.split(',');
+
+  arr.push(document.getElementById("uname").value);
+  lsNames = arr.join(',');
+    console.log(arr)
+  showLS();
+}
+
+function showLS() {
+  var ls = localStorage.getItem('uname');
+  document.getElementById('contents').innerHTML = "Your data is stored:\n"+ls.substr(1);
+}  
+
+    var movies = ["Reservoir Dogs", "Pulp Fiction", "Jackie Brown", 
+"Kill Bill", "Death Proof", "Inglourious Basterds"];
+ 
+// storing our array as a string
+localStorage.setItem("quentinTarantino", JSON.stringify(movies));
+ 
+// retrieving our data and converting it back into an array
+var retrievedData = localStorage.getItem("quentinTarantino");
+var movies2 = JSON.parse(retrievedData);
+ 
+//making sure it still is an array
+console.log(movies2)
+</script>
+
+</body>
+</html>

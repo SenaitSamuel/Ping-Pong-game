@@ -8,6 +8,30 @@ welcomePage.addEventListener('click', function(){
     form.style.display="block"
 })
 
+ function savaHighScore(){
+    var  userNameInput = registeredUserName.value
+    var userScore = user.score
+    var userList = localStorage.getItem('Username')
+    arr = [];
+    if (userList)   // initialize if null
+    arr = userList.split(',');
+    arr.push(userNameInput + ' = ' + userScore);
+    arr.sort()
+    userList = arr.join(',');
+    console.log(arr.sort())
+
+    localStorage.setItem("Username", userList);
+
+    // List of all entries
+    console.log(localStorage.getItem("Username"));
+
+
+};
+
+ 
+
+  
+ 
 // Write username element
  var  form = document.getElementById("form");
  form.style.display="none"
@@ -15,22 +39,28 @@ welcomePage.addEventListener('click', function(){
   
   var userName= document.getElementById("registeredForm");
   userName.addEventListener('click' , UserNameForm  ) 
+  
+  function UserNameForm(){ 
     
-  function UserNameForm(){
-    userNameInput = registeredUserName.value
-   
-    if (userNameInput){
-    localStorage.setItem('Username', userNameInput);
-      console.log( localStorage.Username)
-      form.style.display="none" 
-       theme.style.display="block"
+
+    if(registeredUserName.value == " "){
+        console.log("please enter username") 
+       theme.style.display=" none"
     }
-        
-  else {
-  console.log("please fill the username ")
+   else{
+    localStorage.setItem("entry", registeredUserName.value);
+    form.style.display="none" 
+    theme.style.display="block"
+    console.log(localStorage.getItem("entry"));
    }
    
-  } 
+    
+
+    }
+        
+  
+   
+   
   
 //select the theme button
 var  theme = document.getElementById("theme");
@@ -40,10 +70,16 @@ theme.style.display="none"
 function showTheme (event) {
   var selectedTheme = event.target    
   if (selectedTheme.classList.contains("buttonThemeSnow")){
-      page.style.backgroundColor="red"
+      page.style.backgroundImage = "url('https://ak0.picdn.net/shutterstock/videos/11128610/thumb/1.jpg')";
+      page.style.backgroundSize= "cover";
+      page.style.backgroundRepeat="no-repeat";
+      page.style.backgroundPosition=" center top";
   }
  else if (selectedTheme.classList.contains("buttonThemeSpace")){
-      page.style.backgroundColor="green"
+    page.style.backgroundImage = "url('http://clipart-library.com/img/1071539.jpg')";
+    page.style.backgroundSize= "cover";
+    page.style.backgroundRepeat="no-repeat";
+    page.style.backgroundPosition=" center top";
   }
   theme.style.display="none"
   level.style.display="block"
@@ -57,22 +93,14 @@ level.style.display="none"
 level.addEventListener('click', showLevel)
    
 function showLevel(event) {
-    startGame.style.display="block"
     level.style.display="none" 
-   
+    canvas.style.display="block"
+    exit.style.display="inline-block" 
+    highScoreList.style.display="inline-block"
+    console.log(event)
+    diffuclity(event)
 }  
  
- // start
- var  startGame = document.getElementById("startGame");
- startGame.style.display="none"
- startGame.addEventListener('click', start )
-  
-  function start(){
-    startGame.style.display="none"
-    canvas.style.display="block"
-    exit.style.display="block" 
-    highScore.style.display="block"
-  }
 
   // exit
  var  exit = document.getElementById("exit");
@@ -83,38 +111,33 @@ function showLevel(event) {
     level.style.display="block" 
     canvas.style.display="none"
     exit.style.display="none" 
+    highScoreList.style.display="none"
   }
 
    // exit
- var  highScore = document.getElementById("highScore");
+ var  highScoreList = document.getElementById("highScoreList");
  var  score = document.getElementById("score")
- highScore.style.display="none"
-  highScore.addEventListener('click', scoreButton )
+ highScoreList.style.display="none"
+  highScoreList.addEventListener('click', scoreButton )
   
+
   function scoreButton(){
-    level.style.display="block" 
+    level.style.display="none" 
     canvas.style.display="none"
     exit.style.display="none" 
-    highScore.style.display="none" 
-    
-    userScore = user.score
-    userName = localStorage.Username,
-    comScore = com.score
-    comName =  "com"
-    if(userName  && userScore)
-    localStorage.setItem(userName, userScore);
-  
-    if(comName  && comScore)
-    localStorage.setItem(comName, comScore);
-    displayHighScore(userName, comName)
-}
-    
-    function displayHighScore(userName, comName ){
-        score.innerHTML= userName + userScore +"<br>"+ comName+ comScore
+    highScoreList.style.display="block" 
+     score.innerHTML= ""
 
-    }
-        
+     savaHighScore()
+     var user = localStorage.getItem('Username');
+    score.innerHTML = user 
+  
+      
     
+     
+}
+      
+ 
      
  
 
@@ -126,7 +149,7 @@ var  canvas = document.getElementById("myCanvas");
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
 var ctx = canvas.getContext('2d');
 
-var winnerScore = 2;
+var winnerScore = 5;
 
 var showingWinScreen = false;
 
@@ -149,7 +172,8 @@ var  user = {
     width : 10,
     height : 100,
     score : 0,
-    color : "#A3FF24",
+    color : "red",
+  
 }
 
 // COM Paddle
@@ -205,30 +229,35 @@ function drawText(text,x,y){
 
 
 // listening to the mouse
-canvas.addEventListener('click',startMouseClick);
-function startMouseClick(event ) {
-    if(ball.velocityX === 0 && ball.velocityY === 0){
-        diffuclity()
-    }  
-}
-function diffuclity(){
-    var selectedLevel = event.target.previousElementSibling
-    var medium = selectedLevel.querySelector('.buttonLevelMedium')
-    var hard = selectedLevel.querySelector('.buttonLevelHard')
-    var esay = selectedLevel.querySelector('.buttonLevelEsay')
-    console.log(selectedLevel)
+canvas.addEventListener('click', startCanvas)
 
-    if (medium.classList.contains("buttonLevelMedium")){
+function startCanvas(event) {
+    if(ball.velocityX === 0 && ball.velocityY === 0){
         ball.velocityX = 7
         ball.velocityY =  7
         ball.speed= 10 
         ball.color="blue"
-        console.log(ball.velocityX )
+        console.log(ball.velocityX)
+        console.log(ball.velocityY )
+        
+    }  
+}
+function diffuclity(){
+    var selectedLevel = event.target
+    console.log(selectedLevel)
+    event.preventDefault()
+ 
+    if (selectedLevel.classList.contains("buttonLevelMedium")){
+        ball.velocityX = 7
+        ball.velocityY =  7
+        ball.speed= 10 
+        ball.color="blue"
+        console.log(ball.velocityX)
         console.log(ball.velocityY )
        
         
     }
-   else if (hard.classList.contains("buttonLevelHard")){
+   else if (selectedLevel.classList.contains("buttonLevelHard")){
         ball.velocityX = 15
         ball.velocityY =  7
         ball.speed= 15
@@ -242,7 +271,7 @@ function diffuclity(){
     console.log(ball.velocityX )
     console.log(ball.velocityY )
    }
-    
+    event.stopPropagation()
     
 
  }
@@ -307,6 +336,7 @@ function update(){
     user.score++;
     resetBall();
 }
+ 
     // the ball has a velocity
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
@@ -320,8 +350,8 @@ function update(){
         ball.velocityY = -ball.velocityY;
     }
     // computer movemnt
-    com.y = ball.y
-
+ 
+   // com.y = ball.y
     
    
     // we check if the paddle hit the user or the com paddle
@@ -351,7 +381,6 @@ function update(){
     
   
 }
-
 // render function, the function that does al the drawing
 function render(){
     
@@ -360,15 +389,24 @@ function render(){
     if(showingWinScreen){
         if (user.score >= winnerScore){
             ctx.fillStyle = '#A3FF24';
-            ctx.fillText(user.name,canvas.width/2,canvas.height/3);
+            ctx.textAlign = "center"
+            ctx.fillText(localStorage.entry,canvas.width/2,canvas.height/3);
+            ctx.textBaseline = "middle";
+            ctx.font = "40px Arial"
            
 
         } else if (com.score >= winnerScore) {
             ctx.fillStyle = '#A3FF24';
+            ctx.textAlign = "center"
             ctx.fillText("Com Win",canvas.width/2,canvas.height/3);
+            ctx.textBaseline = "middle";
+            ctx.font = "40px Arial"
         }
         ctx.fillStyle = '##A3FF24';
-        ctx.fillText("click to continue",canvas.width/2,canvas.height/2);
+        ctx.textAlign = "center"
+        ctx.fillText("Click to continue",canvas.width/2,canvas.height/2);
+        ctx.textBaseline = "middle";
+        ctx.font = "40px Arial"
         return;
     }
     
@@ -379,7 +417,7 @@ function render(){
     drawText(com.score,3*canvas.width/4,canvas.height/5);
   
     // draw the user name to the left
-    drawText(localStorage.Username,canvas.width/7,canvas.height/5);
+    drawText(localStorage.entry,canvas.width/7,canvas.height/5);
   
    
      // draw the user name to the left
@@ -404,7 +442,7 @@ function game(){
     update();
     render();
 }
-// number of frames per second
+// number of fr+-ames per second
 let framePerSecond = 50;
 
 //call the game function 50 times every 1 Sec

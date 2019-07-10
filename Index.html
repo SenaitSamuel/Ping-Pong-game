@@ -7,37 +7,36 @@
     <meta http-equiv="Cache-Control" content="max-age=200" />
     <!-- Boostrap 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <!-- Stylesheet -->
+  <link rel="stylesheet" href="Style/styles.css">
 </head>
-<style>  
-#page-wrapper {
-    min-height: 100vh;
-    background-color: black;
-} 
 
-</style>
 <body>
-        <div id="page-wrapper"  class=" [  d-flex align-items-center  ] " >
+        <div id="page-wrapper"  class=" [  align-items-center  ] " >
                 <div class=" [ container-fluid ]  " >
-                    <div class=" [ row ]   [ justify-content-center align-items-center  d-flex text-center h-100 ] ">
-                        <div class="Logo  mt-0 ">
-                            <h1 class=" [ text-light ]  [ mb-2 mt-0  p-2] " > Logo</h1>
+                    <div   class=" [ row    ]   [ align-items-center  text-center h-100   ] ">
+                       <div class=" [   col-12  ]  ">
+                        <div  class=" logo mt-5 mb-5">
+                            <h1 class="  [  mb-2 mt-0  p-2 ] " > Ping <span class="logo-span">Pong</span> Game</h1>
                         </div>
-                        <div id="welcomePage">
-                            <h1 class=" [ text-light ]  [ mb-2 mt-0  p-2] "  >welcome to the Pong ping game</h1>
-                            <a href="home.html" class=" [ btn bg-primary btn-lg text-light ]  [ mt-5 ] ">Go back</a>
-                            <button type="button" class=" [ btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
-                                   continue
+                   
+                 <!-- Welcoming page -->
+                        <div id="welcomePage" class=" mt-5 mb-5 ">
+                            <a href="home.html" class=" [  btn   bg-primary  btn-lg  text-light  ]  [   mr-5 ] "><span class='start-btn'>Go back</span>Go back</a>
+                            <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [   mr-5  ] ">
+                                    <span class='start-btn'>Continue</span>
                                 </button>
                         </div>
-                        <div id="form">
+             <!-- username form -->
+                        <div id="form"  >
                          
-                                  <input  id= "registeredUserName"  type="text"  placeholder="Enter User Name" class=" [ form-control ]  [ p-2 ] "  required  />
+                                  <input  id= "registeredUserName"  type="text"  placeholder="Enter User Name" class=" [  form-control  align-items-center  ]  [ p-2 ] "  value=" "  required>
                             
-                             <div  id="registeredForm"  class=" [ form-group ]  [ mb-4 ] ">
-                                   <button  type="button"  class=" [  btn btn-primary btn-block ]  " >Continue</button>
+                             <div  id="registeredForm"  class=" [ form-group  ]  [ mb-4 ] ">
+                                <input type="submit" name="submit" value="Continue"> 
                             </div>
                         </div>
-                                   
+            <!-- theme -->                        
                         <div  id="theme"  class=" [ col-12 ]    ">  
                                 <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your theme</h1> 
                                 <button type="button" class=" [ buttonThemeSnow  themebutton1 btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
@@ -45,42 +44,42 @@
                                 </button>
                                 <button type="button"  class=" [ buttonThemeSpace btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Space</button>
                          </div>
+             <!-- level -->
                         <div  id="level" class=" [ level col-12 ]   ">
                                 <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your level</h1>
                             <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
                             esay
                             </button>
                             <button  type="button"  class=" [  buttonLevelMedium  btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] "> Medium </button>
-                            <button   type="button"  class=" [  buttonLevelHard   btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Hard </button>
-                            </div>
-                      
-
-                            <canvas id="myCanvas" width="600" height="400"></canvas> 
+                            <button   type="button"  class=" [  buttonLevelHard   btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Hard </button>     
+                        </div>
+                       
+               <!-- canavs -->
+                            <canvas id="myCanvas" class="align-items-center ml-5 mr-5" width="700" height="400"></canvas> 
+                            <div style="display:none;">
+                                    <img id="source"
+                                         src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
+                                         width="300" height="227">
+                                  </div>
+            
                             
-                            <div  id="startGame" class=" [ level col-12 ]   ">
-                                    <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Start the game</h1>
-                                <button  type="button" class=" [   btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
-                                 Start 
-                                </button>
-                                
-                                </div>
-                            
-                                    
-                                    <div  id="exit" class="form-group mb-4" >
-                                            <button   class="btn btn-primary  btn-block " >Exit</button>
+                   <!-- score page -->                  
+                                    <div  id="exit" class="form-group mt-5  mr-5" >
+                                            <button   class="btn btn-primary   " >Exit</button>
                                          </div>
-                                         <div  id="highScore" class="form-group mb-4" >
-                                                <button   class="btn btn-primary  btn-block " >High Score</button> 
+                                       
+                                         <div  id="highScoreList" class="form-group mt-5 mr-5 " >
+                                                <button   class="btn btn-primary  " >High Score</button> 
                                                 <div id="score">
-                                                        this is a score
+                                                       
                                                          </div>   
                                              </div>
                                              
                                 </div>
-                            
+                            </div>
                     </div>
                  </div> 
-
+            
         
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
