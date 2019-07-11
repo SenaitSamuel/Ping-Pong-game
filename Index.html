@@ -12,67 +12,127 @@
 </head>
 
 <body>
-        <div id="page-wrapper"  class=" [  align-items-center  ] " >
+        <div id="page-wrapper"  class=" [  pageWrapper align-items-center  ] " >
                 <div class=" [ container-fluid ]  " >
-                    <div   class=" [ row    ]   [ align-items-center  text-center h-100   ] ">
-                       <div class=" [   col-12  ]  ">
-                        <div  class=" logo mt-5 mb-5">
-                            <h1 class="  [  mb-2 mt-0  p-2 ] " > Ping <span class="logo-span">Pong</span> Game</h1>
-                        </div>
-                   
+                    <div   class=" [ row    ]   [ align-items-center  text-center   ] ">
+                       <div class=" [   col-12  ]  ">   
                  <!-- Welcoming page -->
-                        <div id="welcomePage" class=" mt-5 mb-5 ">
-                            <a href="home.html" class=" [  btn   bg-primary  btn-lg  text-light  ]  [   mr-5 ] "><span class='start-btn'>Go back</span>Go back</a>
-                            <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [   mr-5  ] ">
-                                    <span class='start-btn'>Continue</span>
+                        <div id="welcomePage" class=" container   mt-5 mb-5 ">
+                            <div  class=" logo  mt-5 mb-5">
+                                <h1 class="  [ logo-text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span> <br>Game</h1>
+                                </div>
+                            <button type="button" class=" [ play-btn  ]  [  mt-5 mb-5 ] ">
+                                    
                                 </button>
+                        </div>
+                        <!-- Welcoming page --> 
+                        <div id="aboutPage" class="container  mt-5 mb-5"> 
+                                <div  class=" main-logo  mt-5 mb-5">
+                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span>Game</h1>
+                                        <button type="button" class=" [  about-btn  btn  bg-primary btn-lg text-light ]  [   mt-5  mb-5  ] ">
+                                                <span class='start-btn'>Play</span>
+                                           </button>
+                                        </div>
+                                   <div class="about-button mt-5 mb-5">
+                                        <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [    mr-5 ml-5  ] ">
+                                                <span class='start-btn'>About the Game</span>
+                                           </button>
+                                            <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [  ml-5  mr-5  ] ">
+                                                    <span class='start-btn'>Mouse</span>
+                                                </button>
+                                   </div>
+                                   
+
                         </div>
              <!-- username form -->
-                        <div id="form"  >
-                         
-                                  <input  id= "registeredUserName"  type="text"  placeholder="Enter User Name" class=" [  form-control  align-items-center  ]  [ p-2 ] "  value=" "  required>
-                            
-                             <div  id="registeredForm"  class=" [ form-group  ]  [ mb-4 ] ">
-                                <input type="submit" name="submit" value="Continue"> 
+                        <div id="form"  class=" container  mt-5 mb-5 "  >
+                                <div  class=" main-logo  mt-5 mb-5">
+                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span>Game</h1>
+                                        </div>
+                                        <div class="container form-container  mt-5">
+                                                <div class="row">
+                                                  <div class="col-md-6 ml-auto mr-auto">
+                                                    <div class="card bg-custom mb-5 p-3">
+                                                      <div class="card-body">
+                                                            <form>
+                                                              <div class="form-group">
+                                                                <label for="username">Username</label>
+                                                                <input type="text" class="form-control p-3" id="registeredUserName" placeholder="Enter User name " value=" "  >
+                                                                  <div class="error-message">Username is a required .</div>
+                                                              </div> 
+                                                             <div  id="registeredForm"  >
+                                                                 <input type="submit" name="submit" class=" [  btn  bg-primary btn-lg  btn-block ]" value="Continue" > 
+                                                                </div>    
+                                                            </form>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                             
+                        </div>
+                         <!-- level -->
+                         <div  id="level" class=" [ container  mt-2 mb-5  level col-12   ]   ">
+                            <div class="row">
+                                <div class="col-md-6 ml-auto mr-auto">
+                                <div class="card bg-custom mb-5 p-5">
+                                    <h2 class=" [ card-header  text-light ]  [ mb-3   p-2] " > Choose your level</h2>
+                                    <div class="card-body">
+                                            <div> <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light  ]  [ mt-5 ] ">
+                                                    esay
+                                                    </button>
+                                                </div>
+                                                   <div> <button  type="button"  class=" [  buttonLevelMedium  btn bg-primary btn-lg text-light   ]  [ mt-5 ] "> 
+                                                       Medium 
+                                                    </button>
+                                                </div>
+                                                   <div> <button   type="button"  class=" [  buttonLevelHard   btn bg-primary btn-lg text-light   ]  [ mt-5 ] "> 
+                                                       Hard
+                                                     </button> 
+                                                    </div>    
+                            </div>
                             </div>
                         </div>
+                    </div>    
+                        </div>
+
             <!-- theme -->                        
-                        <div  id="theme"  class=" [ col-12 ]    ">  
-                                <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your theme</h1> 
-                                <button type="button" class=" [ buttonThemeSnow  themebutton1 btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
-                                    Snow
-                                </button>
-                                <button type="button"  class=" [ buttonThemeSpace btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Space</button>
+                        <div  id="theme"  class=" [ container   mt-5 mb-5 col-12 ]    ">  
+                                <div class="row">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                        <div class="card bg-custom mb-5 p-5">
+                                            <h2 class=" [ card-header  text-light ]  [ mb-3   p-2] " > Choose your theme</h2>
+                                            <div class="card-body">
+                                                    <div> <button type="button" class=" [ buttonThemeSnow  themebutton1 btn bg-primary btn-lg text-light ]  [ mt-5 ] ">
+                                                            Sand
+                                                           </button>
+                                                       </div>
+                                                       <div>
+                                                            <button type="button"  class=" [ buttonThemeSpace   btn bg-primary btn-lg text-light ]  [ mt-5 ] "> 
+                                                                Space
+                                                            </button>                          
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>         
                          </div>
-             <!-- level -->
-                        <div  id="level" class=" [ level col-12 ]   ">
-                                <h1 class=" [ text-light ]  [ mb-5 mt-5  p-2] " > Choose your level</h1>
-                            <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] ">
-                            esay
-                            </button>
-                            <button  type="button"  class=" [  buttonLevelMedium  btn bg-primary btn-lg text-light ]  [ mt-5 mr-5 ] "> Medium </button>
-                            <button   type="button"  class=" [  buttonLevelHard   btn bg-primary btn-lg text-light ]  [ mt-5 ] "> Hard </button>     
                         </div>
                        
                <!-- canavs -->
-                            <canvas id="myCanvas" class="align-items-center ml-5 mr-5" width="700" height="400"></canvas> 
-                            <div style="display:none;">
-                                    <img id="source"
-                                         src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
-                                         width="300" height="227">
-                                  </div>
-            
+                           <div class="container text-center ">
+                                <canvas id="myCanvas"  width="700" height="400"></canvas> 
+                           </div>
                             
+                            
+                 
                    <!-- score page -->                  
-                                    <div  id="exit" class="form-group mt-5  mr-5" >
+                                    <div  id="exit" class=" form-group mt-5 mr-5" >
                                             <button   class="btn btn-primary   " >Exit</button>
                                          </div>
                                        
-                                         <div  id="highScoreList" class="form-group mt-5 mr-5 " >
+                                         <div  id="highScoreList" class="  form-group  mt-5 mr-5 " >
                                                 <button   class="btn btn-primary  " >High Score</button> 
-                                                <div id="score">
-                                                       
-                                                         </div>   
+                                                <div id="score" class=" tex-center">  
                                              </div>
                                              
                                 </div>

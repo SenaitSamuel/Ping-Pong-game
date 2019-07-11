@@ -5,6 +5,15 @@ var  page = document.getElementById("page-wrapper");
 var  welcomePage = document.getElementById("welcomePage"); 
 welcomePage.addEventListener('click', function(){
     welcomePage.style.display="none"
+    aboutPage.style.display="block"
+    page.classList.add("aboutPage")
+    page.classList.remove("pageWrapper")
+})
+
+var  aboutPage = document.getElementById("aboutPage"); 
+aboutPage.style.display="none"
+aboutPage.addEventListener('click', function(){
+    aboutPage.style.display="none"
     form.style.display="block"
 })
 
@@ -14,10 +23,10 @@ welcomePage.addEventListener('click', function(){
     var userList = localStorage.getItem('Username')
     arr = [];
     if (userList)   // initialize if null
-    arr = userList.split(',');
-    arr.push(userNameInput + ' = ' + userScore);
+    arr = userList.split(",")
+    arr.push( userNameInput + ' = ' + userScore);
     arr.sort()
-    userList = arr.join(',');
+    userList = arr.join("<br>");
     console.log(arr.sort())
 
     localStorage.setItem("Username", userList);
@@ -36,70 +45,64 @@ welcomePage.addEventListener('click', function(){
  var  form = document.getElementById("form");
  form.style.display="none"
  var  registeredUserName = document.getElementById("registeredUserName");
-  
+ var error = document.querySelector(".error-message")
   var userName= document.getElementById("registeredForm");
   userName.addEventListener('click' , UserNameForm  ) 
   
-  function UserNameForm(){ 
-    
+  function UserNameForm(e){ 
+     e.preventDefault();
 
     if(registeredUserName.value == " "){
-        console.log("please enter username") 
+        error.style.display=" block"
        theme.style.display=" none"
     }
    else{
     localStorage.setItem("entry", registeredUserName.value);
     form.style.display="none" 
-    theme.style.display="block"
+    level.style.display="inline-block"
+
     console.log(localStorage.getItem("entry"));
    }
    
     
 
     }
-        
-  
-   
-   
-  
-//select the theme button
-var  theme = document.getElementById("theme");
-theme.addEventListener('click' , showTheme  ) ; 
-theme.style.display="none"
-
-function showTheme (event) {
-  var selectedTheme = event.target    
-  if (selectedTheme.classList.contains("buttonThemeSnow")){
-      page.style.backgroundImage = "url('https://ak0.picdn.net/shutterstock/videos/11128610/thumb/1.jpg')";
-      page.style.backgroundSize= "cover";
-      page.style.backgroundRepeat="no-repeat";
-      page.style.backgroundPosition=" center top";
-  }
- else if (selectedTheme.classList.contains("buttonThemeSpace")){
-    page.style.backgroundImage = "url('http://clipart-library.com/img/1071539.jpg')";
-    page.style.backgroundSize= "cover";
-    page.style.backgroundRepeat="no-repeat";
-    page.style.backgroundPosition=" center top";
-  }
-  theme.style.display="none"
-  level.style.display="block"
-
-  event.stopPropagation()
-}
-
- //select the level button
+  //select the level button
 var level = document.getElementById("level");
 level.style.display="none"
 level.addEventListener('click', showLevel)
    
 function showLevel(event) {
     level.style.display="none" 
-    canvas.style.display="block"
-    exit.style.display="inline-block" 
-    highScoreList.style.display="inline-block"
+    theme.style.display="inline-block";
     console.log(event)
     diffuclity(event)
-}  
+}        
+   
+//select the theme button
+var  theme = document.getElementById("theme");
+theme.addEventListener('click' , showTheme  ) ; 
+theme.style.display="none";
+function showTheme (event) {
+  var selectedTheme = event.target    
+  if (selectedTheme.classList.contains("buttonThemeSnow")){
+    page.classList.add("themeSand")
+    page.classList.remove("pageWrapper")
+         
+  }
+ else if (selectedTheme.classList.contains("buttonThemeSpace")){
+    page.classList.add("themeSpace")
+    page.classList.remove("pageWrapper")
+  }
+  theme.style.display="none"
+  canvas.style.display="block"
+  exit.style.display="inline-block" 
+ 
+
+  event.stopPropagation()
+}
+
+ 
  
 
   // exit
@@ -130,7 +133,10 @@ function showLevel(event) {
 
      savaHighScore()
      var user = localStorage.getItem('Username');
-    score.innerHTML = user 
+    score.innerHTML = user;
+    score.style.color= "red"
+    score.style.border = " 2px solid red"
+    score.style.display= "table"
   
       
     
@@ -387,10 +393,11 @@ function render(){
     // clear the canvas
     drawRect(0, 0, canvas.width, canvas.height, "#000");
     if(showingWinScreen){
+        highScoreList.style.display="inline-block"
         if (user.score >= winnerScore){
             ctx.fillStyle = '#A3FF24';
             ctx.textAlign = "center"
-            ctx.fillText(localStorage.entry,canvas.width/2,canvas.height/3);
+            ctx.fillText(localStorage.entry + " " + "Win",canvas.width/2,canvas.height/3);
             ctx.textBaseline = "middle";
             ctx.font = "40px Arial"
            
@@ -408,6 +415,7 @@ function render(){
         ctx.textBaseline = "middle";
         ctx.font = "40px Arial"
         return;
+        
     }
     
     // draw the user score to the left
