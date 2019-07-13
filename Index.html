@@ -21,23 +21,23 @@
                             <div  class=" logo  mt-5 mb-5">
                                 <h1 class="  [ logo-text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span> <br>Game</h1>
                                 </div>
-                            <button type="button" class=" [ play-btn  ]  [  mt-5 mb-5 ] ">
-                                    
+                            <button type="button" class=" [  play-btn   ]  [  mt-5 mb-5 ] ">
+                                
                                 </button>
                         </div>
                         <!-- Welcoming page --> 
                         <div id="aboutPage" class="container  mt-5 mb-5"> 
                                 <div  class=" main-logo  mt-5 mb-5">
-                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span>Game</h1>
+                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span><br>Game</h1>
                                         <button type="button" class=" [  about-btn  btn  bg-primary btn-lg text-light ]  [   mt-5  mb-5  ] ">
                                                 <span class='start-btn'>Play</span>
                                            </button>
                                         </div>
                                    <div class="about-button mt-5 mb-5">
-                                        <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [    mr-5 ml-5  ] ">
+                                        <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [  mb-5 mr-5 ml-5  ] ">
                                                 <span class='start-btn'>About the Game</span>
                                            </button>
-                                            <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [  ml-5  mr-5  ] ">
+                                            <button type="button" class=" [  btn  bg-primary btn-lg text-light ]  [  mb-5  ml-5  mr-5  ] ">
                                                     <span class='start-btn'>Mouse</span>
                                                 </button>
                                    </div>
@@ -47,7 +47,7 @@
              <!-- username form -->
                         <div id="form"  class=" container  mt-5 mb-5 "  >
                                 <div  class=" main-logo  mt-5 mb-5">
-                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span>Game</h1>
+                                        <h1 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span><br>Game</h1>
                                         </div>
                                         <div class="container form-container  mt-5">
                                                 <div class="row">
@@ -72,14 +72,14 @@
                                              
                         </div>
                          <!-- level -->
-                         <div  id="level" class=" [ container  mt-2 mb-5  level col-12   ]   ">
+                         <div id="level"  class=" [ container  mt-2 mb-5  level col-12   ]   ">
                             <div class="row">
                                 <div class="col-md-6 ml-auto mr-auto">
                                 <div class="card bg-custom mb-5 p-5">
-                                    <h2 class=" [ card-header  text-light ]  [ mb-3   p-2] " > Choose your level</h2>
-                                    <div class="card-body">
+                                    <h2 class=" [ card-header  text-light ]  [ mb-3 ] " > Choose your level</h2>
+                                    <div  class="card-body">
                                             <div> <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light  ]  [ mt-5 ] ">
-                                                    esay
+                                                    Esay
                                                     </button>
                                                 </div>
                                                    <div> <button  type="button"  class=" [  buttonLevelMedium  btn bg-primary btn-lg text-light   ]  [ mt-5 ] "> 
@@ -119,23 +119,31 @@
                         </div>
                        
                <!-- canavs -->
-                           <div class="container text-center ">
+                           <div class="col-md-6 ml-auto mr-auto">
                                 <canvas id="myCanvas"  width="700" height="400"></canvas> 
                            </div>
                             
                             
                  
-                   <!-- score page -->                  
-                                    <div  id="exit" class=" form-group mt-5 mr-5" >
-                                            <button   class="btn btn-primary   " >Exit</button>
-                                         </div>
+                   <!-- score page --> 
+                                    
+                                            <div  id="exit" class=" form-group mt-5 mr-5" >
+                                                    <button   class="btn btn-primary   " >Exit</button>
+                                                 </div>
+                                               
+                                                 <div  id="highScoreList" class="  form-group  mt-5 mr-5 " >
+                                                        <button   class="btn btn-primary  " >High Score</button> 
+                                                        
+                                                        <ul id="score">
+                                                        </ul>
+                                                    </div> 
+
+                                                
                                        
-                                         <div  id="highScoreList" class="  form-group  mt-5 mr-5 " >
-                                                <button   class="btn btn-primary  " >High Score</button> 
-                                                <div id="score" class=" tex-center">  
-                                             </div>
-                                             
-                                </div>
+                                            
+                          
+                    </div>      
+                               
                             </div>
                     </div>
                  </div> 

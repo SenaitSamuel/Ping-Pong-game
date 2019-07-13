@@ -20,26 +20,23 @@ aboutPage.addEventListener('click', function(){
  function savaHighScore(){
     var  userNameInput = registeredUserName.value
     var userScore = user.score
-    var userList = localStorage.getItem('Username')
+    var userList = localStorage.getItem('userScore')
     arr = [];
     if (userList)   // initialize if null
     arr = userList.split(",")
-    arr.push( userNameInput + ' = ' + userScore);
+    arr.push( `<li>${userNameInput} =  ${userScore} </li>  <br> `);
     arr.sort()
     userList = arr.join("<br>");
     console.log(arr.sort())
 
-    localStorage.setItem("Username", userList);
+    localStorage.setItem("userScore", userList);
 
     // List of all entries
-    console.log(localStorage.getItem("Username"));
+    console.log(localStorage.getItem("userScore"));
 
 
 };
 
- 
-
-  
  
 // Write username element
  var  form = document.getElementById("form");
@@ -76,7 +73,8 @@ function showLevel(event) {
     level.style.display="none" 
     theme.style.display="inline-block";
     console.log(event)
-    diffuclity(event)
+  
+    
 }        
    
 //select the theme button
@@ -97,6 +95,7 @@ function showTheme (event) {
   theme.style.display="none"
   canvas.style.display="block"
   exit.style.display="inline-block" 
+  highScoreList.style.display="block"
  
 
   event.stopPropagation()
@@ -119,26 +118,25 @@ function showTheme (event) {
 
    // exit
  var  highScoreList = document.getElementById("highScoreList");
- var  score = document.getElementById("score")
  highScoreList.style.display="none"
-  highScoreList.addEventListener('click', scoreButton )
-  
+ 
+ 
+ highScoreList.addEventListener('click', scoreButton )
+ var  score = document.getElementById("score")
 
   function scoreButton(){
-    level.style.display="none" 
     canvas.style.display="none"
     exit.style.display="none" 
-    highScoreList.style.display="block" 
+    highScoreList.style.display="block"
      score.innerHTML= ""
 
      savaHighScore()
-     var user = localStorage.getItem('Username');
-    score.innerHTML = user;
-    score.style.color= "red"
-    score.style.border = " 2px solid red"
-    score.style.display= "table"
-  
-      
+     if (typeof (localStorage.getItem("userScore")) != null && (localStorage.length != 0)){
+        var user = localStorage.getItem('userScore');
+          score.innerHTML += user;
+       
+     }
+     
     
      
 }
@@ -155,7 +153,7 @@ var  canvas = document.getElementById("myCanvas");
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
 var ctx = canvas.getContext('2d');
 
-var winnerScore = 5;
+var winnerScore = 2;
 
 var showingWinScreen = false;
 
@@ -232,28 +230,27 @@ function drawText(text,x,y){
     ctx.fillText(text, x, y);
 } 
 
+var buttonLevelMedium = document.querySelector(".buttonLevelMedium")
+var buttonLevelHard = document.querySelector(".buttonLevelHard")
 
 
 // listening to the mouse
 canvas.addEventListener('click', startCanvas)
 
 function startCanvas(event) {
-    if(ball.velocityX === 0 && ball.velocityY === 0){
-        ball.velocityX = 7
-        ball.velocityY =  7
-        ball.speed= 10 
-        ball.color="blue"
-        console.log(ball.velocityX)
-        console.log(ball.velocityY )
-        
-    }  
+   if  (  ball.velocityX === 0 && ball.velocityY === 0 ){
+    diffuclity()
+    }
+  
 }
 function diffuclity(){
     var selectedLevel = event.target
-    console.log(selectedLevel)
+     selectedLevel = level
+     console.log(selectedLevel)
     event.preventDefault()
  
-    if (selectedLevel.classList.contains("buttonLevelMedium")){
+    if (selectedLevel.classList.contains("buttonLevelMedium")) {
+        
         ball.velocityX = 7
         ball.velocityY =  7
         ball.speed= 10 
@@ -261,12 +258,13 @@ function diffuclity(){
         console.log(ball.velocityX)
         console.log(ball.velocityY )
        
-        
-    }
-   else if (selectedLevel.classList.contains("buttonLevelHard")){
+    }   
+    
+   else if (selectedLevel.classList.contains("buttonLevelHard")) {
         ball.velocityX = 15
         ball.velocityY =  7
         ball.speed= 15
+        ball.color="orange"
         console.log(ball.velocityX )
         console.log(ball.velocityY )
     }
@@ -278,7 +276,7 @@ function diffuclity(){
     console.log(ball.velocityY )
    }
     event.stopPropagation()
-    
+  
 
  }
 canvas.addEventListener("mousemove", mousePos);

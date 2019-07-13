@@ -26,7 +26,7 @@
   .logo-span{
     color: red;
 }
-.play-btn {
+.play-btn  {
     width: 100px;
     height: 100px;
     background: radial-gradient( rgba(243, 25, 25, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
@@ -230,7 +230,14 @@
     margin-top:5rem;
     cursor: pointer;
 }
-
+#score {
+    width: 250px;
+    padding: 20px;
+}
+ .bg-custom-1{
+    background: linear-gradient(to right, rgb(27, 5, 68, 0.767), #007bff, #039BE6, #028BCF, rgb(15, 25, 78));
+    width: 200px;
+ }
   #ball {
     display: block;
     position: relative;
@@ -252,3 +259,56 @@
   }
 
   
+
+  @media only screen and (max-width : 1200px) {
+
+  }
+  
+  @media only screen and (max-width : 979px) {
+    .logo-text{
+      font-size: 130px;
+  }
+  }
+  
+  @media only screen and (max-width : 767px) {
+  
+    .logo-text{
+      font-size: 90px;
+  }
+  .main-logo--text {
+    font-size: 4.5rem !important;
+
+}
+.about-btn{
+  margin-top: 6rem !important;
+ 
+}
+.about-button{
+  display: block;
+}
+.form-container{
+  margin-top: 6rem !important;
+
+}
+#theme{
+  margin-top: 5rem!important; 
+}
+#level{
+  margin-top: 5rem!important; 
+}
+h2{
+  font-size: 45px;
+}
+#myCanvas{
+  width: 100%;
+  height: auto;
+}
+  }
+  
+  @media only screen and (max-width : 480px) {
+     
+  }
+  
+  @media only screen and (max-width : 320px) {
+      
+  }
