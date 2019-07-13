@@ -24,7 +24,7 @@ aboutPage.addEventListener('click', function(){
     arr = [];
     if (userList)   // initialize if null
     arr = userList.split(",")
-    arr.push( `<li>${userNameInput} =  ${userScore} </li>  <br> `);
+    arr.push( `<th>${userNameInput} </th>  <td> ${userScore} </td>  `);
     arr.sort()
     userList = arr.join("<br>");
     console.log(arr.sort())
@@ -86,16 +86,17 @@ function showTheme (event) {
   if (selectedTheme.classList.contains("buttonThemeSnow")){
     page.classList.add("themeSand")
     page.classList.remove("pageWrapper")
-         
+    page.classList.remove("themeSpace")     
   }
  else if (selectedTheme.classList.contains("buttonThemeSpace")){
     page.classList.add("themeSpace")
     page.classList.remove("pageWrapper")
+    page.classList.remove("themeSand")
   }
   theme.style.display="none"
   canvas.style.display="block"
   exit.style.display="inline-block" 
-  highScoreList.style.display="block"
+  highScoreList.style.display="inline-block"
  
 
   event.stopPropagation()
@@ -116,28 +117,38 @@ function showTheme (event) {
     highScoreList.style.display="none"
   }
 
-   // exit
+   // high score
  var  highScoreList = document.getElementById("highScoreList");
  highScoreList.style.display="none"
  
- 
+
  highScoreList.addEventListener('click', scoreButton )
  var  score = document.getElementById("score")
 
   function scoreButton(){
     canvas.style.display="none"
     exit.style.display="none" 
-    highScoreList.style.display="block"
+    highScoreList.style.display="none"
+    tableList.style.display="block"
      score.innerHTML= ""
 
      savaHighScore()
      if (typeof (localStorage.getItem("userScore")) != null && (localStorage.length != 0)){
         var user = localStorage.getItem('userScore');
-          score.innerHTML += user;
-       
-     }
      
-    
+          score.innerHTML += user;
+        
+        } 
+     }
+     var  tableList = document.getElementById("tableList");
+     tableList.style.display="none"
+
+     tableList.addEventListener('click', playAgain )
+     function  playAgain(){
+        canvas.style.display="block"
+        exit.style.display="inline-block" 
+        highScoreList.style.display="inline-block"
+        tableList.style.display="none"
      
 }
       
