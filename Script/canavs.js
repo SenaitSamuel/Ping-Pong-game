@@ -8,7 +8,7 @@ var  canvas = document.getElementById("myCanvas");
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
 var ctx = canvas.getContext('2d');
 
-var winnerScore = 5;
+var winnerScore = 10;
 
 var showingWinScreen = false;
 

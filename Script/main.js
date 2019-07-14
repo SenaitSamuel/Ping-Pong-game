@@ -10,9 +10,6 @@ var  aboutPage = document.getElementById("aboutPage");
 // about the page
 var  aboutGame = document.getElementById("aboutGame"); 
 
-// how to playe page
-var  howTOPlay = document.getElementById("howTOPlay"); 
-
 // Write username element
 var  form = document.getElementById("form");
 
@@ -33,7 +30,6 @@ var  theme = document.getElementById("theme");
 
    aboutPage.style.display="none"
    aboutGame.style.display="none"
-   howTOPlay.style.display="none"
    form.style.display="none"
    theme.style.display="none";
    level.style.display="none"

@@ -133,20 +133,7 @@
   
     }
   }
-  .aboutPage{
-    min-height: 100vh;
-    background:#000 url("../image/about-Image.jpg");
-    z-index:0;
-    background-position: center top;
-    background-repeat: no-repeat;
-    position: relative;
-    background-color: #000;
-    color: #eee;
-    width: 100%;
-    background-size: cover;
-    box-shadow:inset 0 0 200px 200px rgba(27, 5, 68, 0.767);
-
-  }
+  
 .main-logo--text {
     font-size: 5.5rem !important;
 

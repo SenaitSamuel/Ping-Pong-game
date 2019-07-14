@@ -2,8 +2,6 @@
 welcomePage.addEventListener('click', function(){
     welcomePage.style.display="none"
     aboutPage.style.display="block"
-    page.classList.add("aboutPage")
-    page.classList.remove("pageWrapper")
 })
  
 // Listening to the mouse for  about page
@@ -18,17 +16,11 @@ function showAboutPage(){
         console.log("playclick")
         console.log(selectedPage) 
     }
-   else if (selectedPage.classList.contains("aboutGameButton ")){
+   else {
     aboutPage.style.display="none"
     aboutGame.style.display="block"
     console.log("aboutgame")
     console.log(selectedPage) 
-    }
-    else{
-        howTOPlay.style.display="block"
-        aboutPage.style.display="none"
-        console.log("how to play")
-        console.log(selectedPage) 
     }
    
     event.stopPropagation()
@@ -37,27 +29,19 @@ function showAboutPage(){
  
 // Listening to the mouse for about the game
 
-aboutGame.addEventListener('click', aboutButton)
-function aboutButton(){
-    aboutGame.style.display="none"
-    aboutPage.style.display="block"
-}
-
-// Listening to the mouse for about the game
-
-howTOPlay.addEventListener('click', InfoButton )
+aboutGame.addEventListener('click', InfoButton )
 
 function InfoButton(){
     selectedHowToPlay = event.target
     if (selectedHowToPlay.classList.contains("playButton")){
-        howTOPlay.style.display="none"
+        aboutGame.style.display="none"
         form.style.display="block"  
-        console.log(selectedHowToPlay)
+        console.log("player")
     }
     else{
-        howTOPlay.style.display="none"
-        aboutPage.style.display="block"
-        console.log(selectedHowToPlay)
+      aboutGame.style.display="none"
+      aboutPage.style.display="block"
+      console.log("about")
     }
    
 }
