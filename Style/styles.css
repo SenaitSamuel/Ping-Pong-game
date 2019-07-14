@@ -219,9 +219,10 @@
     .form-group .error-message {
       display: none;
     }
+
     input[type="text"] {
       border-radius: 5rem !important;
-      width: 225px;
+     
     }
     
     /* Error Styling */
@@ -331,13 +332,14 @@ tr{
     font-size: 4.5rem !important;
 
 }
-.about-btn{
-  margin-top: 6rem !important;
- 
+
+.fa-5x {
+  font-size: 3em;
 }
 .about-button{
   display: block;
 }
+
 .form-container{
   margin-top: 6rem !important;
 
@@ -354,6 +356,10 @@ h2{
 #myCanvas{
   width: 100%;
   height: auto;
+}
+
+td {
+  padding-left: 8rem !important;
 }
   }
   

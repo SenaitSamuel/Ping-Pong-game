@@ -173,6 +173,11 @@ function resetBall(){
     ball.speed = 7;
 }
 function collision(b,p){
+    var ballBottom = ball.y+ ball.radius
+    var ballTop = ball.y- ball.radius
+    var ballLeft =  ball.x - ball.radius
+    var ballRight =  ball.x + ball.radius
+   
     p.top = p.y;
     p.bottom = p.y + p.height;
     p.left = p.x;
@@ -208,11 +213,11 @@ function update(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     
-    // when the ball collides with bottom and top walls we inverse the x and y velocity.
+    // when the ball collides  top walls we inverse the x and y velocity.
     if(ball.x  < 0 || ball.x  > canvas.width){
         ball.velocityX = -ball.velocityX;
     }
-
+    //whne the ball collides with bottom
     if(ball.y  < 0 || ball.y  > canvas.height){
         ball.velocityY = -ball.velocityY;
     }

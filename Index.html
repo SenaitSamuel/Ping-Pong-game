@@ -14,12 +14,12 @@
 <body>
         <div id="page-wrapper"  class=" [  pageWrapper align-items-center  ] " >
                 <div class=" [ container-fluid ]  " >
-                    <div   class=" [ row    ]   [ align-items-center  text-center   ] ">
+                    <div   class=" [ row    ]   [ align-items-center     ] ">
                        <div class=" [   col-12  ]  ">   
                  <!-- Welcoming page -->
-                        <div id="welcomePage" class=" container   mt-5 mb-5 ">
+                        <div id="welcomePage" class=" container text-center  mt-5 mb-5 ">
                             <div  class=" logo  mt-5 mb-5">
-                                <h1 class="  [ logo-text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span> <br>Game</h1>
+                                <h1 class="  [ logo-text mb-2   ] " > Ping <span class="logo-span">Pong</span> <br>Game</h1>
                                 </div>
                             <button type="button" class=" [  play-btn   ]  [  mt-5 mb-5 ] ">
                                 
@@ -27,11 +27,11 @@
                         </div>
                         <!-- ABOUT page --> 
                         <div id="aboutPage" class=" container  mt-5 mb-5"> 
-                                <div class="row">
+                                <div class="row text-center">
                                         <div class="col-md-12 ml-auto mr-auto">
-                                            <div class="card bg-custom mb-5 p-3">
-                                <div  class=" main-logo  mt-5 mb-5">
-                                        <h2 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span><br>Game</h2>
+                                            <div class="card bg-custom mb-5 ">
+                                <div  class=" main-logo  mt-5 mb-2">
+                                        <h2 class="  [ main-logo--text mb-2   ] " > Ping <span class="logo-span">Pong</span><br>Game</h2>
                                         </div>
                                         <div  class="card-body">
                                         <div>
@@ -52,20 +52,31 @@
                          <!-- about the gamepage --> 
                          <div id="aboutGame" class="container  mt-5 mb-5"> 
                                 <div class="row">
-                                        <div class="col-md-8 ml-auto mr-auto">
-                                            <div class="card bg-custom mb-5 p-5">
+                                        <div class="col-md-8 ">
+                                            <div class="card bg-custom mb-5 text-center ">
                                                     <h2 class=" [ card-header  text-light ]  [ mb-3 ] " > About ping pong game</h2>
-                                             <div  class="card-body">
-                                            <p >Pong is one of the first computer games that ever created, 
+                                             <div  class="card-body ">
+                                            <p class="text-justify" >Pong is one of the first computer games that ever created, 
                                                 this simple "tennis like" game features two paddles and a ball, the goal is to defeat your opponent by being the
                                                  first one to gain10 point, a player gets a point once the opponent misses a ball. The game can be played  one player against a computer controlled paddle. The game was originally developed by Allan Alcorn and released in 1972 by Atari corporations. 
                                                   Soon, Pong became a huge success, and became the first commercially successful game, On 1975, Atari release a home edition of Pong (the first version was played on Arcade machines) which sold 150,000 units.
-                                                   Today, the Pong Game is considered to be the game which started the video games industry, as it proved that the video games market can produce significant revenues.</p>
-                                            <a ><i class="fas fa-5x fa-arrow-circle-left"></i> </a> 
-                                            First  to 10point is a winner
-                                            <button type="button" class=" [ playButton   btn  bg-primary btn-lg text-light ]  [   mt-5  mb-5  ] ">
-                                                    Play
-                                               </button>
+                                                   Today, the Pong Game is considered to be the game which started the video games industry, as it proved that the video games market can produce significant revenues.</p><br>
+                                           
+                                                <h2> How to Play</h2>
+                                                 This game is single player mode,  where the user controls one of left paddle using mouse , while the computer controls right paddle.
+                                                 A ball is bouncing between the two sides of the screen  in some velocity . The aim  of this game is that the player return the ball before it collides with the wall. 
+                                                  If the ball is missed, a point is awarded to the side who returned the ball.
+                                                  The first who score 10 points win the game
+                                                 <div class=" mt-4 " >
+                                                        <a ><i class="fas fa-5x fa-arrow-circle-left"></i> </a> 
+                                                 </div>
+                                                   
+                                             <div  >
+                                                    <button type="button" class=" [ playButton   btn  bg-primary btn-lg text-light ]  [   mt-5  mb-5  ] ">
+                                                            Play
+                                                       </button>
+                                             </div>
+                                              
              
                                  </div>  
                                 </div>
@@ -75,21 +86,21 @@
                          
              <!-- username form -->
                         <div id="form"  class=" container  mt-5 mb-5 "  >
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col-md-8 ml-auto mr-auto">
-                                    <div class="card bg-custom mb-5 p-3">
+                                    <div class="card bg-custom mb-5 ">
 
                                 <div  class=" main-logo  mt-5 mb-5">
                                         <h2 class="  [ main-logo--text mb-2  p-2 ] " > Ping <span class="logo-span">Pong</span><br>Game</h2>
                                         </div>
     
-                                                  <div class="col-md-6 ml-auto mr-auto p-5">
+                                                  <div class="col-md-8 ml-auto mr-auto p-5">
                                                     <div class="">
                                                       <div class="card-body">
                                                             <form>
                                                               <div class="form-group">
-                                                                <label for="username">Username</label>
-                                                                <input type="text" class="form-control p-3" id="registeredUserName" placeholder="Enter User name " value=" "  >
+                                                                <label for="username" class="text-left">Username</label>
+                                                                <input type="text" class="form-control " id="registeredUserName" placeholder="Enter User name " value=" "  >
                                                                   <div class="error-message">Username is a required .</div>
                                                               </div> 
                                                              <div  id="registeredForm"  >
@@ -106,9 +117,9 @@
                         </div>
                          <!-- level -->
                          <div id="level"  class=" [ container  mt-2 mb-5  level col-12   ]   ">
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col-md-8 ml-auto mr-auto">
-                                <div class="card bg-custom mb-5 p-5">
+                                <div class="card bg-custom mb-5 ">
                                     <h2 class=" [ card-header  text-light ]  [ mb-3 ] " > Choose your level</h2>
                                     <div  class="card-body">
                                             <div> <button  type="button" class=" [ buttonLevelEsay   btn bg-primary btn-lg text-light  ]  [ mt-5 ] ">
@@ -131,9 +142,9 @@
 
             <!-- theme -->                        
                         <div  id="theme"  class=" [ container   mt-5 mb-5 col-12 ]    ">  
-                                <div class="row">
+                                <div class="row text-center">
                                         <div class="col-md-8 ml-auto mr-auto">
-                                        <div class="card bg-custom mb-5 p-5">
+                                        <div class="card bg-custom mb-5 ">
                                             <h2 class=" [ card-header  text-light ]  [ mb-3   p-2] " > Choose your theme</h2>
                                             <div class="card-body">
                                                     <div> <button type="button" class=" [ buttonThemeSnow  themebutton1 btn bg-primary btn-lg text-light ]  [ mt-5 ] ">
@@ -172,7 +183,7 @@
                                                 <div id="tableList" class="container   mt-5 mb-5 col-12"> 
                                                         <div class="row">
                                                                 <div class="col-md-6 ml-auto mr-auto">
-                                                                <div class="card bg-custom mb-5 p-5">
+                                                                <div class="card bg-custom mb-5 ">
                                                                     <h2 class=" [ card-header  text-light ]  [ mb-3   p-2] " > High score list </h2>
                                                                     <div class="card-body">  
                                                 <table  class="table table-borded table-responsive table-striped mt-5 ">
