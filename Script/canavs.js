@@ -172,9 +172,6 @@ function resetBall(){
     ball.velocityY = 0;
     ball.speed = 7;
 }
-
-// collision detection
-
 function collision(b,p){
     p.top = p.y;
     p.bottom = p.y + p.height;
@@ -192,9 +189,6 @@ function collision(b,p){
         ball.velocityX = -ball.velocityX;
     } ;
 }
-// update function, the function that does all calculations
-
-
 
 function update(){
     
@@ -222,34 +216,18 @@ function update(){
     if(ball.y  < 0 || ball.y  > canvas.height){
         ball.velocityY = -ball.velocityY;
     }
-    // AIputer movemnt
+    // AIputer movemnt with the ball
  
     AI.y = ball.y
     
-   
+
     // we check if the paddle hit the player1 or the AI paddle
     let player = (ball.x  < canvas.width/2) ? player1 : AI;
     
     // if the ball hits a paddle
     if(collision(ball,player)){
     
-  // we check where the ball hits the paddle
-        let collidePoint = (ball.y - (player.y + player.height/2));
-        collidePoint = collidePoint / (player.height/2);
-        
-        // when the ball hits the top of a paddle we want the ball, to take a -45degees angle
-        // when the ball hits the center of the paddle we want the ball to take a 0degrees angle
-        // when the ball hits the bottom of the paddle we want the ball to take a 45degrees
-        // Math.PI/4 = 45degrees
-        let angleRad = (Math.PI/4) * collidePoint;
-        
-        // change the X and Y velocity direction
-        let direction = (ball.x + ball.radius < canvas.width/2) ? 1 : -1;
-        ball.velocityX = direction * ball.speed * Math.cos(angleRad);
-        ball.velocityY = ball.speed * Math.sin(angleRad);
-        
-        // speed up the ball everytime a paddle hits it.
-        ball.speed += 0.1;
+        ball.velocityY =  -ball.velocityY
     }
     
   

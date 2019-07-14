@@ -50,7 +50,7 @@ function InfoButton(){
 
  function savaHighScore(){
     var  userNameInput = registeredUserName.value
-    var userScore = user.score
+    var userScore = player1.score
     var userList = localStorage.getItem('userScore')
     arr = [];
     if (userList)   // initialize if null
