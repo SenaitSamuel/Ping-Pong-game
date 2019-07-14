@@ -263,6 +263,12 @@
 .score{
   padding-left: 8rem !important;
 }
+.table {
+  border-radius: 5px;
+  width: 100%;
+  margin: 0px auto;
+  float: none;
+}
 .table-dark{
   background-image: -webkit-linear-gradient(top, #dd0b1d, #14a84d); 
   background-image: -moz-linear-gradient(top, #dd0b1d, #14a84d);  
@@ -332,7 +338,7 @@ tr{
   margin-top: 5rem!important; 
 }
 h2{
-  font-size: 45px;
+  font-size: 40px;
 }
 #myCanvas{
   width: 100%;
