@@ -284,34 +284,15 @@ tbody{
 }
 td{
   width: 400px;
-  font-style: 20px;
+   padding-left: 8rem !important;
+   font-style: 20px;
 }
 tr{
   display: block;
   font-size: 22px;
 }
 
-  #ball {
-    display: block;
-    position: relative;
-    width: 10vh;
-    height: 10vh;
-    justify-content: center;
-    background-color: #E3170A;
-    border-radius: 50%;
-    animation: bounce 1.5s alternate infinite;
-  }
-  
-  @keyframes bounce {
-    0% {
-      transform: translateY(70vh);
-    }
-    95%, 100% {
-      transform: translateY(10vh);
-    }
-  }
-
-  
+ 
 
   @media only screen and (max-width : 1200px) {
 

@@ -99,7 +99,7 @@ theme.addEventListener('click' , showTheme  ) ;
 
 function showTheme (event) {
   var selectedTheme = event.target    
-  if (selectedTheme.classList.contains("buttonThemeSnow")){
+  if (selectedTheme.classList.contains("buttonThemeSand")){
     page.classList.add("themeSand")
     page.classList.remove("pageWrapper")
     page.classList.remove("themeSpace")     

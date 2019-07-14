@@ -3,8 +3,7 @@
 var  canvas = document.getElementById("myCanvas");
  canvas.style.display="none"
 
- 
-// getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
+// getContext of canvas 
 var ctx = canvas.getContext('2d');
 
 var winnerScore = 10;
@@ -172,12 +171,7 @@ function resetBall(){
     ball.velocityY = 0;
     ball.speed = 7;
 }
-function collision(b,p){
-    var ballBottom = ball.y+ ball.radius
-    var ballTop = ball.y- ball.radius
-    var ballLeft =  ball.x - ball.radius
-    var ballRight =  ball.x + ball.radius
-   
+function collides(b,p){
     p.top = p.y;
     p.bottom = p.y + p.height;
     p.left = p.x;
@@ -188,7 +182,7 @@ function collision(b,p){
     b.left = b.x - b.radius;
     b.right = b.x + b.radius;
     
-    // check if we hit top/bottom boarder
+    // paddle hit  top/bottom boarder
   
     if(p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top){
         ball.velocityX = -ball.velocityX;
@@ -200,7 +194,7 @@ function update(){
     if(showingWinScreen){
         return;
     } 
-    // change the score of players, if the ball goes to the left "ball.x<0" AIputer win, else if "ball.x > canvas.width" the player1 win
+    // change the score of players,
     if( ball.x - ball.radius < 0 ){
         AI.score++;
         resetBall();
@@ -230,7 +224,7 @@ function update(){
     let player = (ball.x  < canvas.width/2) ? player1 : AI;
     
     // if the ball hits a paddle
-    if(collision(ball,player)){
+    if(collides(ball,player)){
     
         ball.velocityY =  -ball.velocityY
     }
@@ -263,7 +257,7 @@ function render(){
         }
         ctx.fillStyle = '##A3FF24';
         ctx.textAlign = "center"
-        ctx.fillText("Click to continue",canvas.width/2,canvas.height/2);
+        ctx.fillText("Click to Play again",canvas.width/2,canvas.height/2);
         ctx.textBaseline = "middle";
         ctx.font = "40px Arial"
         return;
@@ -292,13 +286,11 @@ function render(){
     //  draw the AI name to the right
     drawTextAIName()
 }
-function game(){
+function pong(){
     update();
     render();
 }
-// number of fr+-ames per second
-let framePerSecond = 50;
 
-//call the game function 50 times every 1 Sec
-let loop = setInterval(game,1000/framePerSecond);
+//call pong 
+let loop = setInterval(pong,1000/50);
 
