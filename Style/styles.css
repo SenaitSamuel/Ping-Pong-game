@@ -56,6 +56,7 @@
     display: block;
     margin: 100px auto;
     box-shadow: 0px 0px 25px 3px rgba(243, 25, 25, 0.8);
+    cursor: pointer;
   }
   
   /* triangle */
@@ -150,10 +151,7 @@
     font-size: 5.5rem !important;
 
 }
-.about-btn{
-  margin-top: 10rem !important;
- 
-}
+
 
 .themeSand{
     min-height: 100vh;
@@ -180,14 +178,14 @@
     background-size: cover;
   }
   h2{
-      font-size: 60px;
+      font-size: 50px;
   }
 
 .btn{
     text-align: center;
     display: inline-block;
     width: 220px;
-    height: 70px;
+    height: 60px;
     font-size: 28px;
     background-image: -webkit-linear-gradient(top, #dd0b1d, #14a84d); 
     background-image: -moz-linear-gradient(top, #dd0b1d, #14a84d);  
@@ -218,6 +216,10 @@
     background: linear-gradient( rgb(27, 5, 68, 0.767), #021f3d, rgb(6, 46, 66), rgb(3, 27, 39), rgb(15, 25, 78));
   }
 
+  a:not([href]):not([tabindex]) {
+   
+  color: #dd0b1d;
+}
 
   .error-message {
       color: #cc0033;
@@ -232,6 +234,7 @@
     }
     input[type="text"] {
       border-radius: 5rem !important;
+      width: 225px;
     }
     
     /* Error Styling */
@@ -257,6 +260,7 @@
 }
 
 #myCanvas{
+ 
     top:0;
     bottom: 0;
     left: 0;
@@ -264,24 +268,39 @@
     margin-top:5rem;
     cursor: pointer;
 }
-.opening-hours {
-  max-width: 500px;
-  margin: 25px auto;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-}
+
 #exit{
   text-align: left !important;
 }
-th{
-  
+.score{
+  padding-left: 8rem !important;
+}
+.table-dark{
+  background-image: -webkit-linear-gradient(top, #dd0b1d, #14a84d); 
+  background-image: -moz-linear-gradient(top, #dd0b1d, #14a84d);  
+  background-image: -ms-linear-gradient(top, #dd0b1d, #14a84d);  
+  background-image: -o-linear-gradient(top, #dd0b1d, #14a84d); 
+ background-image: linear-gradient(to bottom, #dd0b1d, #14a84d);
+ -webkit-border-radius: 28; 
+  -moz-border-radius: 28; 
+   border-radius: 28px;
+  box-shadow: 6px 5px 24px #666666;
+
+}
+tbody{
+  background-image: -webkit-linear-gradient(top, #96b998, #eb6e7e);  
+  background-image: -moz-linear-gradient(top, #96b998, #eb6e7e);
+    background-image: -ms-linear-gradient(top, #96b998, #eb6e7e);  
+    background-image: -o-linear-gradient(top, #96b998, #eb6e7e); 
+   background-image: linear-gradient(to bottom, #96b998, #eb6e7e);
 }
 td{
-  width: 400px
+  width: 400px;
+  font-style: 20px;
 }
 tr{
   display: block;
+  font-size: 22px;
 }
 
   #ball {
