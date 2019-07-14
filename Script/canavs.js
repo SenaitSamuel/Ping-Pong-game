@@ -1,5 +1,4 @@
 
-
 // select canvas element
 var  canvas = document.getElementById("myCanvas");
  canvas.style.display="none"
@@ -20,14 +19,14 @@ var  ball = {
     radius : 10,
     velocityX : 0,
     velocityY : 0,
-    speed : 5,
+    speed : 7,
     color : "#A3FF24",
 }
 
-// User Paddle
-var  user = {
+// player 1 Paddle
+var  player1 = {
     x : 40, // left side of canvas
-    y : (canvas.height - 100)/2, // -100 the height of paddle
+    y : (canvas.height - 100)/2, 
     width : 10,
     height : 100,
     score : 0,
@@ -35,10 +34,10 @@ var  user = {
   
 }
 
-// COM Paddle
-var  com = {
-    x : canvas.width - 40, // - width of paddle
-    y : (canvas.height - 100)/2, // -100 the height of paddle
+// AI Paddle
+var  AI = {
+    x : canvas.width - 40, // 
+    y : (canvas.height - 100)/2, 
     width : 10,
     height : 100,
     score : 0,
@@ -57,37 +56,60 @@ var net = {
 
 
 
-// draw a rectangle, will be used to draw paddles
-function drawRect(x, y, w, h, color){
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, w, h);
+/// draw the player1's paddle
+function drawRectPlayer1(x, y, w, h, color){
+    ctx.fillStyle = player1.color;
+    ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+}
+/// draw the player2's paddle
+function drawRectPlayer2(x, y, w, h, color){
+    ctx.fillStyle =AI.color;
+    ctx.fillRect(AI.x, AI.y, AI.width, AI.height);
 }
 
 // draw circle, will be used to draw the ball
-function drawArc(x, y, r, color){
-    ctx.fillStyle = color;
+function drawBall(x, y, r, color){
+    ctx.fillStyle = ball.color;
     ctx.beginPath();
-    ctx.arc(x,y,r,0,Math.PI*2,true);
+    ctx.arc(ball.x, ball.y, ball.radius,0,Math.PI*2,true);
     ctx.closePath();
     ctx.fill();
 }
 // draw the net
 function drawNet(){
     for(let i = 0; i <= canvas.height; i+=15){
-        drawRect(net.x, net.y + i, net.width, net.height, net.color);
+        ctx.fillStyle =net.color;
+        ctx.fillRect(net.x, net.y + i, net.width, net.height);
     }
 }
 
-// draw text
-function drawText(text,x,y){
+//  draw the player1 score to the left
+function drawTextPlayer1(text,x,y){
     ctx.fillStyle = "#A3FF24";
     ctx.font = "20px fantasy";
-    ctx.fillText(text, x, y);
-} 
+    ctx.fillText(player1.score,canvas.width/4,canvas.height/5);
+}
 
-var buttonLevelMedium = document.querySelector(".buttonLevelMedium")
-var buttonLevelHard = document.querySelector(".buttonLevelHard")
- var  speed = 1
+//draw the AI score to the right
+function drawTextAI(text,x,y){
+    ctx.fillStyle = "#A3FF24";
+    ctx.font = "20px fantasy";
+    ctx.fillText(AI.score,3*canvas.width/4,canvas.height/5);
+}  
+
+//  draw the player1 name to the left
+function drawTextPlayer1Name(text,x,y){
+    ctx.fillStyle = "#A3FF24";
+    ctx.font = "20px fantasy";
+    ctx.fillText(localStorage.entry,canvas.width/7,canvas.height/5);
+}
+
+//draw the AI name to the right
+function drawTextAIName(text,x,y){
+    ctx.fillStyle = "#A3FF24";
+    ctx.font = "20px fantasy";
+    ctx.fillText("AI",3*canvas.width/5,canvas.height/5);
+} 
 
 // listening to the mouse
 canvas.addEventListener('click', startCanvas)
@@ -127,20 +149,20 @@ canvas.addEventListener("mousemove", mousePos);
 
 function mousePos(evt){
     let rect = canvas.getBoundingClientRect();
-    user.y = evt.clientY - rect.top - user.height/2;
+    player1.y = evt.clientY - rect.top - player1.height/2;
 }
 canvas.addEventListener('mousedown',handleMouseClick);
 function handleMouseClick(evt) {
     if(showingWinScreen){
-        user.score = 0;
-        com.score = 0;
+        player1.score = 0;
+        AI.score = 0;
         showingWinScreen = false;
     }
 }
-// when COM or USER scores, we reset the ball
+// when AI or player1 scores, we reset the ball
 function resetBall(){
-    if (user.score >= winnerScore ||
-        com.score >= winnerScore) {
+    if (player1.score >= winnerScore ||
+        AI.score >= winnerScore) {
             showingWinScreen = true;
     }
 
@@ -150,6 +172,7 @@ function resetBall(){
     ball.velocityY = 0;
     ball.speed = 7;
 }
+
 // collision detection
 
 function collision(b,p){
@@ -178,12 +201,12 @@ function update(){
     if(showingWinScreen){
         return;
     } 
-    // change the score of players, if the ball goes to the left "ball.x<0" computer win, else if "ball.x > canvas.width" the user win
+    // change the score of players, if the ball goes to the left "ball.x<0" AIputer win, else if "ball.x > canvas.width" the player1 win
     if( ball.x - ball.radius < 0 ){
-        com.score++;
+        AI.score++;
         resetBall();
     }else if( ball.x + ball.radius > canvas.width){
-        user.score++;
+        player1.score++;
         resetBall();
     }
  
@@ -199,13 +222,13 @@ function update(){
     if(ball.y  < 0 || ball.y  > canvas.height){
         ball.velocityY = -ball.velocityY;
     }
-    // computer movemnt
+    // AIputer movemnt
  
-    com.y = ball.y
+    AI.y = ball.y
     
    
-    // we check if the paddle hit the user or the com paddle
-    let player = (ball.x  < canvas.width/2) ? user : com;
+    // we check if the paddle hit the player1 or the AI paddle
+    let player = (ball.x  < canvas.width/2) ? player1 : AI;
     
     // if the ball hits a paddle
     if(collision(ball,player)){
@@ -231,14 +254,16 @@ function update(){
     
   
 }
-// render function, the function that does al the drawing
-function render(){
-    
+// render function
+function render(){ 
     // clear the canvas
-    drawRect(0, 0, canvas.width, canvas.height, "#000");
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // draw the Winning name to the left
     if(showingWinScreen){
         highScoreList.style.display="inline-block"
-        if (user.score >= winnerScore){
+        if (player1.score >= winnerScore){
             ctx.fillStyle = '#A3FF24';
             ctx.textAlign = "center"
             ctx.fillText(localStorage.entry + " " + "Win",canvas.width/2,canvas.height/3);
@@ -246,10 +271,10 @@ function render(){
             ctx.font = "40px Arial"
            
 
-        } else if (com.score >= winnerScore) {
+        } else if (AI.score >= winnerScore) {
             ctx.fillStyle = '#A3FF24';
             ctx.textAlign = "center"
-            ctx.fillText("Com Win",canvas.width/2,canvas.height/3);
+            ctx.fillText("AI Win",canvas.width/2,canvas.height/3);
             ctx.textBaseline = "middle";
             ctx.font = "40px Arial"
         }
@@ -262,33 +287,27 @@ function render(){
         
     }
     
-    // draw the user score to the left
-    drawText(user.score,canvas.width/4,canvas.height/5);
-    
-    // draw the COM score to the right
-    drawText(com.score,3*canvas.width/4,canvas.height/5);
+    // draw the player1 name to the left
+    drawTextPlayer1()
   
-    // draw the user name to the left
-    drawText(localStorage.entry,canvas.width/7,canvas.height/5);
-  
-   
-     // draw the user name to the left
-     drawText("com",3*canvas.width/5,canvas.height/5);
-    
-    
+     // draw the player1 name to the  right
+     drawTextAI()
     
     // draw the net
     drawNet();
     
-    // draw the user's paddle
-    drawRect(user.x, user.y, user.width, user.height, user.color);
+    // draw the player1's paddle
+    drawRectPlayer1();
     
-    // draw the COM's paddle
-    drawRect(com.x, com.y, com.width, com.height, com.color);
+    // draw the AI's paddle
+    drawRectPlayer2()
     
     // draw the ball
-    drawArc(ball.x, ball.y, ball.radius, ball.color);
-     
+    drawBall();
+    //  draw the player1 name to the left
+    drawTextPlayer1Name()
+    //  draw the AI name to the right
+    drawTextAIName()
 }
 function game(){
     update();
